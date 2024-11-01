@@ -246,10 +246,47 @@ body {
      text-transform: uppercase; /* h1 转换为大写 */
 }
 
+h1 {
+    font-family: 'Pinyon Script'; /* 设置 h1 使用 Pinyon Script 字体 */
+    font-size: 3em; /* 放大 3 倍 */
+    text-transform: uppercase; /* 保留大写样式 */
+    text-align: center; /* 保持居中对齐 */
+}
+
 /* 下划线装饰的元素 */
  h2, h3, em, th, .cm-keyword {
      text-decoration: underline; /* 增加下划线装饰 */
 }
+
+h2 {
+    font-size: 1.5em; /* 二级标题放大 1.5 倍 */
+    text-align: center; /* 保持居中对齐 */
+}
+
+h3 {
+    font-size: 1.2em; /* 三级标题放大 1.2 倍 */
+}
+
+
+h4::before, h5::before, h6::before {
+    content: '•'; /* 添加中间点符号 */
+    margin-right: 0.5em; /* 点与文本之间的间距 */
+    color: #333; /* 点的颜色 */
+    font-size:1.2em;
+}
+
+h4 {
+    text-indent: 2em; /* h4 缩进一个 tab */
+}
+
+h5 {
+    text-indent: 4em; /* h5 缩进两个 tab */
+}
+
+h6 {
+    text-indent: 6em; /* h6 缩进三个 tab */
+}
+
 
 /* 引用和加粗文本颜色 */
  blockquote, strong {
@@ -264,7 +301,7 @@ body {
 
 /* 链接颜色和脚注行颜色 */
 a, .footnote-line {
-     color: #333; /* 链接颜色设置 */
+    color: #0000FF; /* 链接颜色设置为蓝色 */
 }
 
 /* 强调和加粗文本样式 */
@@ -274,7 +311,7 @@ a, .footnote-line {
 
 /* 无序列表样式 */
  ul {
-     list-style-type: square; /* 列表样式为方形 */
+     list-style-type: disc; /* 列表样式为方形 */
 }
 
 /* 内容最大宽度 */
@@ -313,6 +350,6 @@ hr {
 </style><title>index</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='my-blogs'><span>My Blogs</span></h1><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#my-blogs">My Blogs</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#machine-learning-algorithms">Machine Learning Algorithms</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6"><a class="md-toc-inner" href="#supervised-learning">supervised learning</a></span></p></div><hr /><h2 id='machine-learning-algorithms'><span>Machine Learning Algorithms</span></h2><h3 id='supervised-learning'><span>supervised learning</span></h3><ul><li><p><span>fsafsd</span></p></li><li><p><span>fsdafsd</span></p></li><li><p><span>dsfsd</span></p></li><li><p><span>af</span></p></li><li><p><span>sadf</span></p></li><li><p><span>sda</span></p></li><li><p><span>fs</span></p></li><li><p><span>daf</span></p></li><li><p><span>sdf</span></p></li><li><p><span>sd</span></p></li><li><p><span>f</span></p></li></ul><p>&nbsp;</p><ul><li class='md-task-list-item task-list-item task-list-not-done' ><input type='checkbox' /><p>&nbsp;</p></li></ul><p>&nbsp;</p><hr /><p><a href='./SVM.html'><span>SVM</span></a></p><p>&nbsp;</p></div></div>
+<div id='write'  class=''><h1 id='my-blogs'><span>My Blogs</span></h1><p><span>[Overview]</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#my-blogs">My Blogs</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#machine-learning-algorithms">Machine Learning Algorithms</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6"><a class="md-toc-inner" href="#supervised-learning">supervised learning</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7"><a class="md-toc-inner" href="#svmsvm">SVM(SVM)</a></span></p></div><hr /><h2 id='machine-learning-algorithms'><span>Machine Learning Algorithms</span></h2><h3 id='supervised-learning'><span>supervised learning</span></h3><h4 id='svmsvm'><span>SVM(</span><a href='./SVM.html'><span>SVM</span></a><span>)</span></h4><p>&nbsp;</p></div></div>
 </body>
 </html>
