@@ -10,5 +10,5 @@
 
 ### supervised learning
 
-#### SVM([blog of SVM](./SVM.html))
+#### SVM ([blog of SVM](./SVM.html))
 
