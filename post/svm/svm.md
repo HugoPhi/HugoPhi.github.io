@@ -257,11 +257,11 @@ SVR的主要参数包括：
 
 ​	在本节中，我们将分步骤手动实现分类SVM和回归SVM算法，分别针对分类任务和回归任务的需求进行代码编写。实现中不使用任何机器学习库，仅依靠基础数值计算库来手动构建算法流程，帮助理解SVM算法的核心原理和计算过程。
 
-### 分类SVM实现
+### 1. 分类SVM实现
 
 ​	分类SVM的目标是找到一个最佳分隔超平面，以最大化间隔的方式将不同类别的样本分开。以下为实现步骤及代码：
 
-#### 1. 初始化参数和核函数
+#### 1.1. 初始化参数和核函数
 
 ```python
 import numpy as np
@@ -285,7 +285,7 @@ class SVMClassifier:
             return self.rbf_kernel(X, Y)
 ```
 
-#### 2. 计算核矩阵并初始化拉格朗日乘子
+#### 1.2. 计算核矩阵并初始化拉格朗日乘子
 
 ```python
 def fit(self, X, y):
@@ -299,7 +299,7 @@ def fit(self, X, y):
     K = self.kernel_function(X, X)
 ```
 
-#### 3. 优化拉格朗日乘子（SMO简化实现）
+#### 1.3. 优化拉格朗日乘子（SMO简化实现）
 
 ```python
 for _ in range(100):  # 设置迭代次数
@@ -312,13 +312,13 @@ for _ in range(100):  # 设置迭代次数
             self.alpha[i] = min(self.C, self.alpha[i] + error)
 ```
 
-#### 4. 计算偏置项
+#### 1.4. 计算偏置项
 
 ```python
 self.b = np.mean(y - (self.alpha * y) @ K)
 ```
 
-#### 5. 预测函数
+#### 1.5. 预测函数
 
 ```python
 def predict(self, X):
@@ -371,11 +371,11 @@ class SVMClassifier:
         return np.sign((self.alpha * self.y_train) @ K.T + self.b)
 ```
 
-### 回归SVM实现
+### 2. 回归SVM实现
 
 回归SVM的目标是拟合一个函数，以使绝大多数数据点在 \( \epsilon \) 不敏感区间内。以下是实现步骤：
 
-#### 1. 核函数和初始化
+#### 2.1. 核函数和初始化
 
 ```python
 class SVR:
@@ -398,7 +398,7 @@ class SVR:
             return self.rbf_kernel(X, Y)
 ```
 
-#### 2. 初始化拉格朗日乘子和核矩阵
+#### 2.2. 初始化拉格朗日乘子和核矩阵
 
 ```python
 def fit(self, X, y):
@@ -411,7 +411,7 @@ def fit(self, X, y):
     K = self.kernel_function(X, X)
 ```
 
-#### 3. 更新拉格朗日乘子
+#### 2.3. 更新拉格朗日乘子
 
 ```python
 for _ in range(100):
@@ -423,13 +423,13 @@ for _ in range(100):
             self.alpha_star[i] = min(max(self.alpha_star[i] - self.C * error, 0), self.C)
 ```
 
-#### 4. 计算偏置项
+#### 2.4. 计算偏置项
 
 ```python
 self.b = np.mean(y - (self.alpha - self.alpha_star) @ K)
 ```
 
-#### 5. 预测函数
+#### 2.5. 预测函数
 
 ```python
 def predict(self, X):
@@ -491,7 +491,7 @@ class SVR:
 
 ## 实验方法
 
-### iris数据集
+### 1. iris数据集
 
 ​	iris数据集是一个有150条4种特征的3类别平衡数据集。首先我们对其进行可视化以考察其线性可分性。可视化得到：
 
@@ -501,7 +501,7 @@ class SVR:
 
 
 
-### ice-cream
+### 2. ice-cream
 
 ​	ice-cream数据集是只包含一个连续特征的回归任务。可视化两个变量的数据得到：
 
@@ -509,7 +509,7 @@ class SVR:
 
 可以看到数据呈现出很强的线性特性。则可以用线性核的SVC来做这个任务，评判指标采用MSE以及$R^2$。具体结果在下一节阐述。
 
-### wine-quality
+### 3. wine-quality
 
 ​	这是一个有许多特征的单变量回归数据集。我们可以通过对每一个特征对因变量的变化作图。得到：
 
