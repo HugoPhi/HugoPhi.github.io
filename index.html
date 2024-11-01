@@ -222,161 +222,383 @@ mjx-container { break-inside: avoid; }
 /* Turing CSS */
 /* By Mistrza */
 
-/* TOC */
+/* 目录样式设置（TOC）：
+   隐藏 h1，调整 h2 到 h6 的左边距 */
 .md-toc-h1 {
     display: none;
 }
-
 .md-toc-h2 {
     margin-left: -2em;
 }
-
 .md-toc-h3 {
     margin-left: -2.5em;
 }
-
 .md-toc-h4 {
     margin-left: -3em;
 }
-
 .md-toc-h5 {
     margin-left: -3.5em; 
 }
-
 .md-toc-h6 {
     margin-left: -4em;
 }
 
-
-
-/* 基本设置 */
+/* 基本设置：
+   设置背景颜色、主文本颜色、字体、加粗效果和文本对齐 */
 body {
-     background-color: #fbfbfb; /* 背景颜色 */
-     color: #333; /* 主文本颜色 */
-     font-family: 'Manjari', monospace; /* 设置全局字体为 Manjari */
-     font-weight: bold; /* 文本加粗 */
-     text-decoration-skip: none; /* 保留装饰线效果 */
-     text-align: justify; /* 文本两端对齐 */
+    background-color: #fbfbfb;
+    color: #333;
+    font-family: 'Manjari', 'Noto Serif SC';
+    font-weight: bold;
+    text-decoration-skip: none;
+    text-align: justify;
 }
 
-/* 设置所有文本元素的字体和大小 */
- h1, h2, h3, h4, h5, h6, p, li, .cm-s-inner, .footnote-line {
-     font-family: 'Manjari'; /* 字体设置 */
-     font-size: 22px; /* 调整后的字体大小 */
+/* 全局字体和大小设置：
+   为标题、段落、列表等元素设置字体和大小 */
+h1, h2, h3, h4, h5, h6, p, li, .cm-s-inner, .footnote-line {
+    font-family: 'Manjari', 'Noto Serif SC';
+    font-size: 22px;
 }
 
-/* 标题对齐和样式 */
- h1, h2 {
-     text-align: center; /* 居中对齐 h1 和 h2 */
+/* 标题样式：
+   居中 h1 和 h2，并为 h1 设置大写和特定字体 */
+h1, h2 {
+    text-align: center;
 }
- h1 {
-     text-transform: uppercase; /* h1 转换为大写 */
-}
-
 h1 {
-    font-family: 'Pinyon Script'; /* 设置 h1 使用 Pinyon Script 字体 */
-    font-size: 3em; /* 放大 3 倍 */
-    text-transform: uppercase; /* 保留大写样式 */
-    text-align: center; /* 保持居中对齐 */
+    font-family: 'Pinyon Script', 'Noto Serif SC';
+    font-size: 3em;
+    text-transform: uppercase;
 }
 
-/* 下划线装饰的元素 */
- h2, h3, em, th, .cm-keyword {
-     text-decoration: underline; /* 增加下划线装饰 */
+/* 下划线样式：
+   为 h2、h3、emphasis、表头、关键字等添加下划线装饰 */
+h2, h3, em, th, .cm-keyword {
+    text-decoration: underline;
 }
 
+/* 标题层级样式：
+   为 h2 到 h6 设置大小、居中对齐、缩进和符号 */
 h2 {
-    font-size: 1.5em; /* 二级标题放大 1.5 倍 */
-    text-align: center; /* 保持居中对齐 */
+    font-size: 1.5em;
+    text-align: center;
 }
-
 h3 {
-    font-size: 1.2em; /* 三级标题放大 1.2 倍 */
+    font-size: 1.2em;
 }
-
-
 h4::before, h5::before, h6::before {
-    content: '▸'; /* 添加中间点符号 */
-    margin-right: 0.5em; /* 点与文本之间的间距 */
-    color: #333; /* 点的颜色 */
-    font-size:1.2em;
+    content: '▸';
+    margin-right: 0.5em;
+    color: #333;
+    font-size: 1.2em;
+}
+h4 { text-indent: 2em; }
+h5 { text-indent: 4em; }
+h6 { text-indent: 6em; }
+
+/* 引用和加粗文本颜色：
+   设置引用和加粗文本为深蓝色 */
+blockquote, strong {
+    color: darkblue;
 }
 
-h4 {
-    text-indent: 2em; /* h4 缩进一个 tab */
+/* 引用块样式：
+   设置引用块的左右边距 */
+blockquote {
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
-h5 {
-    text-indent: 4em; /* h5 缩进两个 tab */
-}
-
-h6 {
-    text-indent: 6em; /* h6 缩进三个 tab */
-}
-
-
-/* 引用和加粗文本颜色 */
- blockquote, strong {
-     color: darkblue; /* 设置为深蓝色 */
-}
-
-/* 引用块的左右边距 */
- blockquote {
-     margin-left: 30px;
-     margin-right: 30px;
-}
-
-/* 链接颜色和脚注行颜色 */
+/* 链接和脚注颜色：
+   设置链接和脚注为蓝色 */
 a, .footnote-line {
-    color: #0000FF; /* 链接颜色设置为蓝色 */
+    color: #0000FF;
 }
 
-/* 强调和加粗文本样式 */
- em, strong {
-     font-style: normal; /* 清除斜体效果 */
+/* 强调和加粗文本样式：
+   清除斜体效果 */
+em, strong {
+    font-style: normal;
 }
 
-/* 无序列表样式 */
- ul {
-     list-style-type: disc; /* 列表样式为方形 */
+/* 无序列表样式：
+   设置列表样式为方形 */
+ul {
+    list-style-type: disc;
 }
 
-/* 内容最大宽度 */
- #write {
-     max-width: 60em; /* 限制内容最大宽度 */
+/* 内容最大宽度：
+   限制内容的最大宽度 */
+#write {
+    max-width: 60em;
 }
 
-/* 页脚分隔线样式 */
- #footer p {
-     border-top: 2px solid #333; /* 页脚分隔线 */
-     margin-top: 10px; /* 间距 */
+/* 页脚样式：
+   设置页脚分隔线的样式 */
+#footer p {
+    border-top: 2px solid #333;
+    margin-top: 10px;
 }
 
-/* 代码块样式 */
- .cm-s-inner {
-     font-family: 'Manjari'; /* 字体为 Manjari */
-     border-left: 2px solid #333; /* 左侧边框 */
-     padding-left: 1em; /* 左侧内边距 */
-}
- .cm-s-inner * {
-     color: #333 !important; /* 代码颜色设置 */
+/* 代码块样式：
+   为代码块设置字体、大小、边框和阴影 */
+.cm-s-inner {
+    font-family: 'FreeMono';
+    font-size: 0.8em;
+    border-left: 2px solid #333;
+    padding-left: 0.5em;
 }
 
-/***************** 这里定义水平线的样式 ****************/
-
+/* 水平线样式：
+   定义水平线的样式 */
 hr {
-    border: none; /* 移除默认边框 */
-    border-top: 3px solid #333; /* 加粗的实线样式 */
-    color: #333; /* 颜色设置 */
+    border: none;
+    border-top: 2px solid #333;
+    color: #333;
+}
+
+/* 表格样式：
+   设置表格的宽度、边框、字体和背景颜色 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Manjari', 'Noto Serif SC';
+    margin: 1em 0;
+    border: 1px solid black;
+    background-color: inherit;
+}
+th, td {
+    padding: 0.45em;
+    text-align: center;
+    border: 1px solid black;
+    background-color: inherit;
+}
+
+/* 表格第一行和第一列背景颜色 */
+thead th, td:first-child {
+    background-color: #e0e0e0;
+}
+thead th:first-child {
+    background-color: #b0b0b0;
+}
+
+/* 行内代码样式：
+   设置代码的字体、大小、颜色、背景、边框、圆角和阴影 */
+code {
+    font-family: 'FreeMono';
+    font-size: 0.9em;
+    color: #d32f2f;
+    background: linear-gradient(to bottom, #f7f7f7, #e0e0e0);
+    padding: 0.3em 0.6em;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+/* 任务列表样式：
+   设置任务列表项的对齐、复选框样式和完成任务的划线效果 */
+.md-task-list-item {
+    display: flex;
+    align-items: left;
+    font-family: 'Manjari', 'Noto Serif SC';
+    font-size: 22px;
+    color: #333;
+    font-weight: normal;
+}
+.md-task-list-item>input {
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    -webkit-appearance: initial;
+    margin-left: -1.5rem;
+    margin-top: 0.55rem;
+    border: 0;
+}
+.md-task-list-item>input:focus {
+    outline: none;
+    box-shadow: none;
+}
+.md-task-list-item>input:before {
+    border: 1px solid #555;
+    border-radius: calc(1rem);
+    width: calc(0.9rem);
+    height: calc(0.9rem);
+    background: #fff;
+    content: '';
+    transition: background-color 200ms ease-in-out;
+    display: block;
+}
+.md-task-list-item>input:checked:before,
+.md-task-list-item>input[checked]:before {
+    background: #333;
+    display: inline-block;
+    transition: background-color 200ms ease-in-out;
+}
+.md-task-list-item>input:checked:after,
+.md-task-list-item>input[checked]:after {
+    opacity: 0;
+}
+.task-list-done {
+    text-decoration: line-through;
 }
 
 
 
 
 
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG2"] path[data-c], mjx-container[jax="SVG2"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
 </style><title>index</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='my-blogs'><span>My Blogs</span></h1><p><span>[Overview]</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n21"><a class="md-toc-inner" href="#my-blogs">My Blogs</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n26"><a class="md-toc-inner" href="#machine-learning-algorithms">Machine Learning Algorithms</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n27"><a class="md-toc-inner" href="#supervised-learning">supervised learning</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n28"><a class="md-toc-inner" href="#svm-blog-of-svm">SVM (blog of SVM)</a></span></p></div><hr /><h2 id='machine-learning-algorithms'><span>Machine Learning Algorithms</span></h2><h3 id='supervised-learning'><span>supervised learning</span></h3><h4 id='svm-blog-of-svm'><span>SVM (</span><a href='./post/svm/svm.html'><span>blog of SVM</span></a><span>)</span></h4><p>&nbsp;</p></div></div>
+<div id='write'  class=''><h1 id='my-blogs'><span>My Blogs</span></h1><p><span>[Overview]</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#my-blogs">My Blogs</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#machine-learning-algorithms">Machine Learning Algorithms</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6"><a class="md-toc-inner" href="#supervised-learning">supervised learning</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7"><a class="md-toc-inner" href="#svm-blog-of-svm">SVM (blog of SVM)</a></span></p></div><hr /><h2 id='machine-learning-algorithms'><span>Machine Learning Algorithms</span></h2><h3 id='supervised-learning'><span>supervised learning</span></h3><h4 id='svm-blog-of-svm'><span>SVM (</span><a href='./post/svm/svm.html'><span>blog of SVM</span></a><span>)</span></h4><figure class='table-figure'><table><thead><tr><th><span>A</span></th><th><span>B</span></th><th><span>C</span></th><th><span>D</span></th><th><span>E</span></th><th><span>F</span></th></tr></thead><tbody><tr><td><span>A1</span></td><td><span>B1</span></td><td><span>C1</span></td><td><span>D1</span></td><td><span>E1</span></td><td><span>F1</span></td></tr><tr><td><span>A2</span></td><td><span>2.3</span></td><td><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.109ex" height="1.464ex" role="img" focusable="false" viewBox="0 -442 490 647" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.464ex;"><defs><path id="MJX-1-TEX-I-1D466" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D466" xlink:href="#MJX-1-TEX-I-1D466"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">y</script></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>A3</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><code>sudo apt install vim</code></p><ul><li class='md-task-list-item task-list-item task-list-done' ><input type='checkbox' checked/><p><span>SVC</span></p></li><li class='md-task-list-item task-list-item task-list-not-done' ><input type='checkbox' /><p><span>SVR</span></p><p>&nbsp;</p></li></ul></div></div>
 </body>
 </html>

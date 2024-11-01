@@ -505,14 +505,13 @@ class SVR:
 
 ​	ice-cream数据集是只包含一个连续特征的回归任务。可视化两个变量的数据得到：
 
-![ice-cream](./asset/icecream.png)
+<img src="./asset/icecream.png" alt="ice-cream" style="zoom:7%;" />
 
 可以看到数据呈现出很强的线性特性。则可以用线性核的SVC来做这个任务，评判指标采用MSE以及$R^2$。具体结果在下一节阐述。
 
 ### 3. wine-quality
 
 ​	这是一个有许多特征的单变量回归数据集。我们可以通过对每一个特征对因变量的变化作图。得到：
-
 
 可见数据的线性可分性并不是很好，所以可能需要适用一些非线性核，比如高斯核。评价指标和iris一样。
 
