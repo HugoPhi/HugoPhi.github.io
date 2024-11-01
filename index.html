@@ -1,38 +1,721 @@
 <!doctype html>
-<html>
+<html style='font-size:24px !important'>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>index</title>
-<link rel="stylesheet" href="./css/index.css">
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+:root {
+    --bg-color: white;
+    /*change background*/
+    --text-color: black;
+    /*change text color*/
+    --md-char-color: #C7C5C5;
+    /*change color of meta characetrs like `*` in markdown */
+    --meta-content-color: #5b808d;
+    /*change color of meta contents like image text or link address in markdown */
+
+    --primary-color: #428bca;
+    /* color of primary buttons */
+    --primary-btn-border-color: #285e8e;
+    --primary-btn-text-color: #fff;
+
+    --window-border: 1px solid #eee;
+    /*border for sidebar, etc*/
+
+    --active-file-bg-color: #eee;
+    /*background color if list item in file tree or file list*/
+    --active-file-text-color: inherit;
+    --active-file-border-color: #777;
+
+    --side-bar-bg-color: var(--bg-color);
+    /*change background of sidebar*/
+    --item-hover-bg-color: rgba(229, 229, 229, 0.59);
+    /*background of control items when hover, like menu in sidebar*/
+    --item-hover-text-color: inherit;
+    --monospace: monospace;
+    /*monospace font for codes, fences*/
+}
+
+
+/***************** 这里定义一些全局信息****************/
+
+html,
+body,
+#write {
+    background: white;
+    font-family: 'SF Pro', 'Noto Serif SC';
+    font-weight: normal;
+    max-width: 55rem;
+}
+
+body {
+    margin: auto;
+}
+
+html {
+    font-size: 18px;
+}
+
+#write {
+    margin: auto;
+    text-align: justify;
+}
+
+
+/***************** 这里定义水平线的样式 ****************/
+
+hr {
+    border: none;
+    border-top: 1px dashed #333;
+    color: #333;
+}
+
+
+/***************** 这里定义脚注的样式 ****************/
+
+sup[md-inline="footnote"] {
+    background-color: white;
+    font-size: 0.8rem;
+    padding: 0;
+}
+
+sup[md-inline="footnote"]:before {
+    content: '[';
+}
+
+sup[md-inline="footnote"]:after {
+    content: ']';
+}
+
+
+/***************** 这里定义链接的样式 ****************/
+
+a {
+    color: #285e8e;
+}
+
+
+/***************** 这里定义ToC的样式 ****************/
+
+.md-toc-content {
+    font-family: 'SF Pro', 'Noto Serif SC';
+}
+
+.md-toc-h1 {
+    font-family: 'Pinyon Script', 'Noto Serif SC';
+    margin-left: 0;
+    font-size: 1rem;
+}
+
+.md-toc-h2 {
+    font-size: 1rem;
+    margin-left: 2rem;
+}
+
+.md-toc-h3 {
+    margin-left: 3rem;
+    font-size: 1rem;
+}
+
+.md-toc-h4 {
+    margin-left: 4rem;
+    font-size: 1rem;
+}
+
+.md-toc-h5 {
+    margin-left: 5rem;
+    font-size: 1rem;
+}
+
+.md-toc-h6 {
+    margin-left: 6rem;
+    font-size: 1rem;
+}
+
+/* 一级标题小红点 */
+.md-toc-h1:before {
+    content: "🔴"; /* 红色小圆点 */
+    display: inline-block;
+    vertical-align: middle;
+    transform: scale(0.4); /* 缩小圆点到原大小的40% */
+    margin-right: 5px; /* 图标与文本之间的间距 */
+}
+
+.md-toc-h1 .md-toc-inner {
+    margin-left: 0;
+}
+
+/* 二级标题小蓝点 */
+.md-toc-h2:before {
+    content: "🟡"; /* 蓝色小圆点 */
+    display: inline-block;
+    vertical-align: middle;
+    transform: scale(0.4); /* 缩小圆点 */
+    margin-right: 5px;
+
+}
+
+.md-toc-h2 .md-toc-inner {
+    margin-left: 0;
+}
+
+
+/* 三级标题小橙点 */
+.md-toc-h3:before {
+    content: "🟢"; /* 橙色小圆点 */
+    display: inline-block;
+    vertical-align: middle;
+    transform: scale(0.4); /* 缩小圆点 */
+    margin-right: 5px;
+}
+
+.md-toc-h3 .md-toc-inner {
+    margin-left: 0;
+}
+
+/* 四级标题小绿点 */
+.md-toc-h4:before {
+    content: "🔵"; /* 绿色小圆点 */
+    display: inline-block;
+    vertical-align: middle;
+    transform: scale(0.4); /* 缩小圆点 */
+    margin-right: 5px;
+}
+
+.md-toc-h4 .md-toc-inner {
+    margin-left: 0;
+}
+
+
+/* 五级标题小黄点 */
+.md-toc-h5:before {
+    content: "🟠"; /* 黄色小圆点 */
+    display: inline-block;
+    vertical-align: middle;
+    transform: scale(0.4); /* 缩小圆点 */
+    margin-right: 5px;
+}
+
+.md-toc-h5 .md-toc-inner {
+    margin-left: 0;
+}
+
+/* 六级标题小紫点 */
+.md-toc-h6:before {
+    content: "🟣 "; /* 紫色小圆点 */
+    display: inline-block;
+    vertical-align: middle;
+    transform: scale(0.4); /* 缩小圆点 */
+    margin-right: 5px;
+}
+
+.md-toc-h6 .md-toc-inner {
+    margin-left: 0;
+}
+
+
+/***************** 这里定义任务列表的样式 ****************/
+
+.md-task-list-item>input {
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    -webkit-appearance: initial;
+    margin-left: -1.5rem;
+    margin-top: .375rem;
+    border: 0;
+}
+
+.md-task-list-item>input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.md-task-list-item>input:before {
+    border: 1px solid #555;
+    border-radius: calc(1rem);
+    width: calc(1rem);
+    height: calc(1rem);
+    background: #fff;
+    content: '';
+    transition: background-color 200ms ease-in-out;
+    display: block;
+}
+
+.md-task-list-item>input:checked:before,
+.md-task-list-item>input[checked]:before {
+    background: #333;
+    display: inline-block;
+    transition: background-color 200ms ease-in-out;
+}
+
+.md-task-list-item>input:checked:after,
+.md-task-list-item>input[checked]:after {
+    opacity: 0;
+}
+
+.task-list-done {
+    /* styles for completed tasks */
+    text-decoration: line-through;
+}
+
+
+/***************** 这里定义YAML头部的样式 ****************/
+
+#write pre.md-meta-block {
+    font-family: 'SF Pro', 'Noto Serif SC';
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+
+/***************** 这里定义代码的样式 ****************/
+
+code {
+    font-family: 'SF Pro';
+    padding: .1rem;
+    background: #f0f0f0;
+    font-size: 0.9rem;
+    margin-left: 0.15rem;
+    margin-right: 0.15rem;
+}
+
+.md-fences {
+    font-family: 'Monaco';
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+/***************** 这里定义大纲的样式 ****************/
+
+.outline-item {
+    font-family: 'SF Pro', 'Noto Serif SC';
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+.outline-h2 .outline-label,
+.outline-h3 .outline-label,
+.outline-h4 .outline-label,
+.outline-h5 .outline-label,
+.outline-h6 .outline-label {
+    font-size: 0.7rem;
+}
+
+.sidebar-content {
+}
+
+.outline-h1 {
+}
+
+.outline-h2 {
+}
+
+.outline-h3 {
+}
+
+.outline-h4 {
+}
+
+.outline-h5 {
+}
+
+.outline-h6 {
+}
+
+
+/***************** 这里定义标题的样式 ****************/
+
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+    font-weight: normal;
+    font-family: 'Manjari', 'Noto Serif SC';
+}
+
+#write h1 {
+    font-size: 2.5rem;
+    color: black;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-style: bold;
+    font-family: 'Pinyon Script', 'Noto Serif SC';
+}
+
+#write h2 {
+    font-size: 1.3rem;
+    color: #285e8e;
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+#write h3 {
+    color: brown;
+    font-size: 1.1rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+#write h4,
+#write h5,
+#write h6 {
+    color: green;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+/***************** 这里定义列表的样式 ****************/
+
+ol li {
+    list-style-position: outside;
+}
+
+ul li {
+    list-style-position: outside;
+}
+
+li {
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0.25rem;
+    font-family: 'SF Pro', 'Noto Serif SC';
+}
+
+li p {
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0.25rem;
+    font-family: 'SF Pro', 'Noto Serif SC';
+}
+
+ul,
+ol {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+
+/***************** 这里定义段落的样式 ****************/
+
+p {
+    font-family: 'SF Pro', 'Noto Serif SC';
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+
+/***************** 这里定义图片的样式 ****************/
+
+img {
+    margin: auto;
+    display: block;
+}
+
+
+/***************** 这里定义引用的样式 ****************/
+
+blockquote {
+    border-left: 5px solid #666;
+    background-color: #f0f0f0;
+    margin-top: 0.75rem;
+    margin-left: 0.375rem;
+    margin-right: 0.375rem;
+    margin-bottom: 0.75rem;
+}
+
+blockquote p {
+    font-family: 'SF Pro', 'Noto Serif SC';
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0rem;
+}
+
+
+/***************** 这里定义表格的样式 ****************/
+
+table {
+    position: relative;
+    font-family: 'SF Pro', 'Noto Serif SC';
+    width: 70%;
+    left: 15%;
+    *border-collapse: collapse;
+    border-spacing: 0;
+    border-top: solid black 2px;
+    border-bottom: solid black 2px;
+}
+
+table thead th {
+    border-bottom: 3px double black;
+}
+
+
+/***************** 这里定义打印或者导出PDF的样式 ****************/
+
+@media print {
+
+    /* for example: */
+    .typora-export * {
+        -webkit-print-color-adjust: exact;
+    }
+
+    /* add styles here */
+    @page {
+        margin-top: 20mm;
+        margin-bottom: 20mm;
+        margin-left: 1mm;
+        margin-right: 1mm;
+        size: A2;
+    }
+
+    #write {
+        max-width: 100%;
+    }
+}
+
+
+
+
+</style><title>index</title>
 </head>
-<body><h1 id='my-blogs'>My Blogs</h1>
-<p>&nbsp;</p>
-<div>[TOC]</div>
-<hr />
-<h2 id='machine-learning-algorithms'>Machine Learning Algorithms</h2>
-<h3 id='supervised-learning'>supervised learning</h3>
-<ul>
-<li>fsafsd</li>
-<li>fsdafsd</li>
-<li>dsfsd</li>
-<li>af</li>
-<li>sadf</li>
-<li>sda</li>
-<li>fs</li>
-<li>daf</li>
-<li>sdf</li>
-<li>sd</li>
-<li>f</li>
-
-</ul>
-<p>&nbsp;</p>
-<ul>
-<li><input type='checkbox' /><p>&nbsp;</p>
-</li>
-
-</ul>
-<p>&nbsp;</p>
-<hr />
-<p>&nbsp;</p>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='my-blogs'><span>My Blogs</span></h1><p>&nbsp;</p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#my-blogs">My Blogs</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#machine-learning-algorithms">Machine Learning Algorithms</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6"><a class="md-toc-inner" href="#supervised-learning">supervised learning</a></span></p></div><hr /><h2 id='machine-learning-algorithms'><span>Machine Learning Algorithms</span></h2><h3 id='supervised-learning'><span>supervised learning</span></h3><ul><li><p><span>fsafsd</span></p></li><li><p><span>fsdafsd</span></p></li><li><p><span>dsfsd</span></p></li><li><p><span>af</span></p></li><li><p><span>sadf</span></p></li><li><p><span>sda</span></p></li><li><p><span>fs</span></p></li><li><p><span>daf</span></p></li><li><p><span>sdf</span></p></li><li><p><span>sd</span></p></li><li><p><span>f</span></p></li></ul><p>&nbsp;</p><ul><li class='md-task-list-item task-list-item task-list-not-done' ><input type='checkbox' /><p>&nbsp;</p></li></ul><p>&nbsp;</p><hr /><p><a href='./SVM.html'><span>SVM</span></a></p><p>&nbsp;</p></div></div>
 </body>
 </html>
