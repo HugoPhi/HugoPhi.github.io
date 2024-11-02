@@ -2,35 +2,35 @@
 
 [TOC]
 
-## 分类SVM算法理论
+## Classification SVM Algorithm Theory
 
-### 1. 基本SVM
+### 1. Basic SVM
 
-#### 1.1. 问题描述
+#### 1.1. Problem Description
 
-​	分类问题的核心在于找到一个能够有效分割不同类别样本的决策边界。在二维空间中，这个决策边界可以是一个线，三维空间中是一个平面，而在高维空间中则是一个超平面。对于线性可分的情况，假设数据集由两类标签组成，目标是找到一个最优超平面，将两类数据分开，并且尽可能增大两类样本到超平面的距离（即间隔）。这样不仅可以使分类更加准确，也增强了模型对噪声数据的鲁棒性。
+The core of classification problems lies in finding a decision boundary that can effectively separate samples of different categories. In a two-dimensional space, this decision boundary can be a line; in three-dimensional space, a plane; and in high-dimensional spaces, a hyperplane. For linearly separable cases, assuming the dataset consists of two classes of labels, the goal is to find an optimal hyperplane that separates the two classes of data and maximizes the distance (i.e., margin) from the samples of both classes to the hyperplane. This not only enhances classification accuracy but also increases the model's robustness to noisy data.
 
-#### 1.2. SVM的工作原理
+#### 1.2. Working Principle of SVM
 
-​	SVM的核心思想是在数据空间中寻找一个能够最大化间隔的超平面。该超平面由一组特定的样本点（即支持向量）定义，这些支持向量是离超平面最近的样本点。SVM的目标是最大化超平面与支持向量之间的距离（即间隔），从而使分类模型更具有泛化性。
+The core idea of SVM is to find a hyperplane in the data space that maximizes the margin. This hyperplane is defined by a set of specific sample points (i.e., support vectors), which are the samples closest to the hyperplane. The objective of SVM is to maximize the distance between the hyperplane and the support vectors (i.e., the margin), thereby making the classification model more generalizable.
 
-假设数据集包含$ N$ 个样本点 $(x_i, y_i)$，其中 $ x_i \in \mathbb{R}^d$ 表示第 $ i$ 个样本的特征向量，$ y_i \in \{-1, 1\}$ 表示样本的标签。SVM的目标是寻找一个线性决策函数：
+Assume the dataset contains $N$ samples $(x_i, y_i)$, where $x_i \in \mathbb{R}^d$ represents the feature vector of the $i$-th sample, and $y_i \in \{-1, 1\}$ represents the label of the sample. The goal of SVM is to find a linear decision function:
 
 $$
 f(x) = w \cdot x + b
 $$
 
-​	其中，$ w $ 是权重向量，$ b $ 是偏置项，使得函数 $ f(x) = 0 $ 对应于分割超平面。对于满足线性可分的数据，SVM希望找到最优的$ w $ 和 $ b$，使得不同类别的样本点离分割超平面的间隔最大。
+where $w$ is the weight vector and $b$ is the bias term, such that the function $f(x) = 0$ corresponds to the separating hyperplane. For linearly separable data, SVM aims to find the optimal $w$ and $b$ that maximize the margin between the different classes of samples from the separating hyperplane.
 
-#### 1.3. 优化目标
+#### 1.3. Optimization Objective
 
-​	要实现间隔最大化，SVM构建的优化目标如下：
+To achieve margin maximization, the optimization objective constructed by SVM is as follows:
 
 $$
 \text{maximize} \quad M = \frac{2}{\|w\|}
 $$
 
-​	即最大化超平面到支持向量的间隔$ M$。通过适当的变换，SVM的优化问题可以被表示为一个约束条件下的二次优化问题：
+This means maximizing the margin $M$, which is the distance from the support vectors to the hyperplane. Through appropriate transformations, the optimization problem of SVM can be represented as a constrained quadratic optimization problem:
 
 $$
 \min \frac{1}{2} \|w\|^2
@@ -40,17 +40,17 @@ $$
 \text{s.t.} \quad y_i (w \cdot x_i + b) \geq 1, \quad i = 1, 2, \ldots, N
 $$
 
-上式中，约束条件$ y_i (w \cdot x_i + b) \geq 1$ 表示所有样本点的类别在超平面的约束下得到正确分类，且距离不小于1。
+In the above equations, the constraint $y_i (w \cdot x_i + b) \geq 1$ ensures that all sample points are correctly classified under the constraints of the hyperplane, and the distance is not less than 1.
 
-#### 1.4. SVM求解方法
+#### 1.4. SVM Solving Methods
 
-​	SVM的求解方法通常使用拉格朗日乘子法和KKT（Karush-Kuhn-Tucker）条件，将约束优化问题转化为无约束优化问题。引入拉格朗日乘子$ \alpha_i$ 后，目标函数变为：
+The solving method for SVM typically uses the Lagrange multiplier method and KKT (Karush-Kuhn-Tucker) conditions to convert the constrained optimization problem into an unconstrained optimization problem. By introducing Lagrange multipliers $\alpha_i$, the objective function becomes:
 
 $$
 L(w, b, \alpha) = \frac{1}{2} \|w\|^2 - \sum_{i=1}^{N} \alpha_i [y_i (w \cdot x_i + b) - 1]
 $$
 
-通过对$ L(w, b, \alpha) $ 关于 $ w $ 和 $ b$ 求偏导并令其为0，可以得到对偶问题。最终的对偶优化目标为：
+By taking the partial derivatives of $L(w, b, \alpha)$ with respect to $w$ and $b$ and setting them to zero, the dual problem can be obtained. The final dual optimization objective is:
 
 $$
 \max \sum_{i=1}^{N} \alpha_i - \frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \alpha_i \alpha_j y_i y_j (x_i \cdot x_j)
@@ -60,141 +60,139 @@ $$
 \text{s.t.} \quad \sum_{i=1}^{N} \alpha_i y_i = 0, \quad \alpha_i \geq 0, \quad i = 1, 2, \ldots, N
 $$
 
-优化求解得到 $\alpha$ 后，权重向量$ w$ 和偏置 $ b$ 可以被计算出来：
+After solving for $\alpha$, the weight vector $w$ and bias $b$ can be calculated as:
 
 $$
 w = \sum_{i=1}^{N} \alpha_i y_i x_i
 $$
 
-然后选取一个支持向量$x_k $计算偏置：
+Then, select a support vector $x_k$ to compute the bias:
 
 $$
 b = y_k - w \cdot x_k
 $$
 
-一旦得到 $w $ 和 $b $，我们就可以通过分类决策函数$ f(x) = \text{sign}(w \cdot x + b)$对新的数据点进行分类。
+Once $w$ and $b$ are obtained, we can classify new data points using the decision function $f(x) = \text{sign}(w \cdot x + b)$.
 
-#### 1.5. 总结
+#### 1.5. Summary
 
-​	基本SVM的优化目标是找到一个最大化类别间隔的超平面，从而提高模型的鲁棒性和泛化能力。通过拉格朗日对偶问题的求解，SVM能够在训练过程中自动选择最有影响力的样本点（支持向量），最终得到一个分类超平面。
+The optimization objective of basic SVM is to find a hyperplane that maximizes the margin between classes, thereby enhancing the model's robustness and generalization ability. By solving the dual problem using the Lagrangian dual approach, SVM automatically selects the most influential sample points (support vectors) during training, ultimately obtaining a classification hyperplane.
 
-### 2. 软间隔SVM
+### 2. Soft Margin SVM
 
-​	在实际问题中，数据往往不是完全线性可分的，可能存在噪声点或重叠区域。为了解决这一问题，SVM引入了软间隔（Soft Margin）概念。软间隔SVM允许在分类边界周围存在一定的误分类样本点，从而平衡分类精度和模型的泛化能力。通过添加一个松弛变量$\xi $，软间隔SVM的目标函数可以表示为：
+In practical problems, data is often not completely linearly separable and may contain noise points or overlapping regions. To address this issue, SVM introduces the concept of a soft margin. The soft margin SVM allows some misclassified samples around the classification boundary, balancing classification accuracy and the model's generalization ability. By adding a slack variable $\xi$, the objective function of the soft margin SVM can be expressed as:
 
 $$
 \min \frac{1}{2} \|w\|^2 + C \sum_{i=1}^{n} \xi_i
 $$
 
-​	其中$C $ 是惩罚参数，用于控制误分类的容忍度。较大的 $ C $值意味着模型更重视分类准确性，尽量减少误分类，但可能导致过拟合；较小的 $ C $ 值则更倾向于增大间隔，允许更多误分类，从而增强模型的泛化能力。
+where $C$ is the penalty parameter that controls the tolerance for misclassification. A larger $C$ value means the model places more emphasis on classification accuracy, striving to minimize misclassifications but may lead to overfitting; a smaller $C$ value tends to enlarge the margin, allowing more misclassifications, thereby enhancing the model's generalization ability.
 
-### 3. 核技巧
+### 3. Kernel Trick
 
-​	对于非线性可分的数据，SVM使用核技巧（Kernel Trick）来将数据映射到高维空间，以实现线性可分。在高维空间中，SVM可以通过线性分离方法对复杂的非线性数据进行分类。常用的核函数包括线性核、多项式核、径向基函数（RBF）核和 Sigmoid 核。
+For non-linearly separable data, SVM uses the kernel trick to map the data into a high-dimensional space to achieve linear separability. In the high-dimensional space, SVM can perform linear separation on complex non-linear data. Common kernel functions include the linear kernel, polynomial kernel, Radial Basis Function (RBF) kernel, and Sigmoid kernel.
 
-​	核函数的引入允许 SVM 将非线性问题转化为线性问题，从而极大地扩展了 SVM 的应用范围。常用的核函数形式为：
+The introduction of kernel functions allows SVM to transform non-linear problems into linear ones, greatly expanding the application range of SVM. The common form of kernel functions is:
 
 $$
 K(x_i, x_j) = \phi(x_i) \cdot \phi(x_j)
 $$
 
-​	其中 $ \phi(x) $ 是将原始特征空间映射到高维空间的映射函数。核技巧不需要显式计算高维映射，只需通过核函数直接计算特征之间的相似度，因此计算效率较高。
+where $\phi(x)$ is the mapping function that maps the original feature space to a high-dimensional space. The kernel trick does not require explicit computation of the high-dimensional mapping but directly computes the similarity between features through the kernel function, thus maintaining computational efficiency.
 
-核函数的选择和参数的设置将直接影响SVM分类模型的表现，需要根据具体问题的分布特点来调整。
+The choice of kernel function and the setting of its parameters directly affect the performance of the SVM classification model and need to be adjusted according to the specific problem's distribution characteristics.
 
-​	在支持向量机中，核函数的主要作用是将数据从低维空间映射到高维空间，从而使非线性可分的数据在高维空间中变得线性可分。核函数的选择对于模型的性能有重要影响，不同的核函数适用于不同的数据分布和特征。以下是几种常见的核函数及其适用场景：
+In support vector machines, the main role of the kernel function is to map data from a low-dimensional space to a high-dimensional space, making non-linearly separable data linearly separable in the high-dimensional space. The choice of kernel function has a significant impact on the model's performance; different kernel functions are suitable for different data distributions and features. Below are some common kernel functions and their applicable scenarios:
 
-#### 3.1. 线性核（Linear Kernel）
+#### 3.1. Linear Kernel
 
-**表达式**：$ K(x_i, x_j) = x_i \cdot x_j $
+**Expression**: $ K(x_i, x_j) = x_i \cdot x_j $
 
-**适用场景**： 
-线性核是最简单的核函数，适用于线性可分的数据集。在低维空间或者特征数远大于样本数的场景下，线性核表现良好。例如，文本分类、图像分类等高维稀疏特征数据通常适合使用线性核。在这些应用中，数据的类别边界往往接近线性分布，因而线性核能够有效且高效地进行分类。
+**Applicable Scenarios**:  
+The linear kernel is the simplest kernel function, suitable for linearly separable datasets. It performs well in low-dimensional spaces or scenarios where the number of features far exceeds the number of samples. For example, high-dimensional sparse feature data such as text classification and image classification typically fit well with the linear kernel. In these applications, the class boundaries are often close to linear distributions, making the linear kernel effective and efficient for classification.
 
-**优缺点**：  
+**Advantages and Disadvantages**:  
 
-- **优点**：计算效率高，尤其在高维稀疏数据上表现出色。
-- **缺点**：无法处理非线性数据。
+- **Advantages**: High computational efficiency, especially excellent performance on high-dimensional sparse data.
+- **Disadvantages**: Cannot handle non-linear data.
 
-#### 3.2. 多项式核（Polynomial Kernel）
+#### 3.2. Polynomial Kernel
 
-**表达式**：$ K(x_i, x_j) = (x_i \cdot x_j + c)^d $
+**Expression**: $ K(x_i, x_j) = (x_i \cdot x_j + c)^d $
 
-其中，$ c $ 是常数项，$ d $ 是多项式的阶数。
+where $c$ is a constant term and $d$ is the degree of the polynomial.
 
-**适用场景**： 
-多项式核适用于那些具有复杂交互关系的数据，但数据的非线性不明显。通过调整多项式的阶数 $ d $ 和常数项 $ c $，多项式核可以在较低维度上处理具有一定非线性的分类问题。它常用于图像处理和自然语言处理中，例如词向量间复杂关系的建模。
+**Applicable Scenarios**:  
+The polynomial kernel is suitable for data with complex interaction relationships, but the non-linearity of the data is not obvious. By adjusting the polynomial degree $d$ and the constant term $c$, the polynomial kernel can handle classification problems with certain non-linearity in lower dimensions. It is commonly used in image processing and natural language processing, such as modeling complex relationships between word vectors.
 
-**优缺点**：  
+**Advantages and Disadvantages**:  
 
-- **优点**：适合中等非线性数据，能够通过调节阶数灵活处理不同复杂度的数据。
-- **缺点**：在高维度和大规模数据集上计算成本较高，容易导致模型过拟合。
+- **Advantages**: Suitable for moderately non-linear data, flexible in handling different levels of data complexity by adjusting the degree.
+- **Disadvantages**: Higher computational cost in high dimensions and large-scale datasets, prone to model overfitting.
 
-#### 3.3. 径向基核（RBF核）或高斯核（Gaussian Kernel）
+#### 3.3. Radial Basis Function (RBF) Kernel or Gaussian Kernel
 
-**表达式**：$ K(x_i, x_j) = \exp\left(-\frac{\|x_i - x_j\|^2}{2\sigma^2}\right) $
+**Expression**: $ K(x_i, x_j) = \exp\left(-\frac{\|x_i - x_j\|^2}{2\sigma^2}\right) $
 
-其中，$ \sigma $ 是用于调节分布范围的参数。
+where $\sigma$ is a parameter used to adjust the distribution range.
 
-**适用场景**： 
-RBF核是最常用的核函数，适用于大部分非线性分类问题，尤其在特征空间较为复杂的场景中表现出色。它具有局部化特性，对相似性较高的数据点具有较强的响应。RBF核常用于生物信息学、图像识别和手写数字识别等需要捕捉复杂边界的领域。
+**Applicable Scenarios**:  
+The RBF kernel is the most commonly used kernel function, suitable for most non-linear classification problems, especially those with complex feature spaces. It has a localization property, strongly responding to highly similar data points. The RBF kernel is often used in bioinformatics, image recognition, and handwritten digit recognition, among other fields that require capturing complex boundaries.
 
-**优缺点**：  
+**Advantages and Disadvantages**:  
 
-- **优点**：能够灵活地处理高度非线性的分类任务，具有较强的模型泛化能力。
-- **缺点**：对参数 $ \sigma $ 敏感，参数设置不当容易导致过拟合或欠拟合。
+- **Advantages**: Capable of flexibly handling highly non-linear classification tasks, strong model generalization ability.
+- **Disadvantages**: Sensitive to the parameter $\sigma$; improper parameter settings can easily lead to overfitting or underfitting.
 
-#### 3.4. Sigmoid核
+#### 3.4. Sigmoid Kernel
 
-**表达式**：$ K(x_i, x_j) = \tanh(\alpha x_i \cdot x_j + c) $
+**Expression**: $ K(x_i, x_j) = \tanh(\alpha x_i \cdot x_j + c) $
 
-其中，$ \alpha $ 和 $ c $ 为常数，$ \tanh $ 是双曲正切函数。
+where $\alpha$ and $c$ are constants, and $\tanh$ is the hyperbolic tangent function.
 
-**适用场景**： 
-Sigmoid核在某些方面类似于神经网络的激活函数，适用于具有神经网络特性的分类问题。它在二类分类任务中使用较多，适合小规模、非线性不特别显著的分类任务，且数据分布较规则。Sigmoid核可用于识别二类模式或特定分类问题的初步实验，但其表现通常不如RBF核或多项式核。
+**Applicable Scenarios**:  
+The Sigmoid kernel is somewhat similar to the activation functions in neural networks and is suitable for classification problems with neural network characteristics. It is more commonly used in binary classification tasks, suitable for small-scale, not particularly highly non-linear classification tasks, and with relatively regular data distributions. The Sigmoid kernel can be used for recognizing binary patterns or preliminary experiments on specific classification problems, but its performance is generally not as good as the RBF or polynomial kernels.
 
-**优缺点**：  
+**Advantages and Disadvantages**:  
 
-- **优点**：适用于二类分类任务，特别是早期的神经网络模型中。
-- **缺点**：不一定满足所有核函数的Mercer定理，因此在特定场景下可能无法收敛，效果不稳定。
+- **Advantages**: Suitable for binary classification tasks, especially in early neural network models.
+- **Disadvantages**: Does not necessarily satisfy Mercer's theorem for all kernel functions, so it may not converge in specific scenarios, leading to unstable performance.
 
-#### 3.5. 拉普拉斯核（Laplacian Kernel）
+#### 3.5. Laplacian Kernel
 
-**表达式**：$ K(x_i, x_j) = \exp\left(-\frac{\|x_i - x_j\|}{\sigma}\right) $
+**Expression**: $ K(x_i, x_j) = \exp\left(-\frac{\|x_i - x_j\|}{\sigma}\right) $
 
-**适用场景**： 
-拉普拉斯核与RBF核相似，但它使用L1距离而不是L2距离，适用于一些具有局部相似性且数据噪声较多的场景。其在信号处理、图像分割等需要对局部特征敏感的应用中更为常见。
+**Applicable Scenarios**:  
+The Laplacian kernel is similar to the RBF kernel but uses the L1 distance instead of the L2 distance. It is suitable for scenarios with local similarity and more data noise. It is more common in applications such as signal processing and image segmentation, where sensitivity to local features is required.
 
-**优缺点**：  
+**Advantages and Disadvantages**:  
 
-- **优点**：对异常值鲁棒性更强，适合噪声较多的数据。
+- **Advantages**: More robust to outliers, suitable for noisy data.
+- **Disadvantages**: Computational efficiency may be lower, suitable for specific local feature tasks.
 
-- **缺点**：计算效率可能较低，适用于特定的局部特征任务。
+The choice of kernel function needs to be adjusted based on the data distribution and the characteristics of the problem. In practical applications, one can start with simple kernel functions (like the linear kernel) and, if the model performance is unsatisfactory, try more complex kernels (like the RBF or polynomial kernels), and optimize the kernel parameters using cross-validation.
 
-​	核函数的选择需要根据数据的分布情况和问题的特性进行调整。在实际应用中，可从简单的核函数（如线性核）开始，如果发现模型表现不佳，则尝试更为复杂的核（如RBF核、多项式核），并结合交叉验证来优化核函数的参数。
+## Regression SVM Algorithm Theory
 
+### 1. Basic Regression SVM
 
-## 回归SVM算法理论
+#### 1.1. Problem Description
 
-### 1. 基本回归SVM
+The goal of regression problems is to predict continuous numerical outputs by learning patterns from training data. In Support Vector Regression (SVR), the model aims to find a function such that the prediction error for most data points does not exceed a specified tolerance range $\epsilon$. Unlike classification SVM, SVR no longer focuses on dividing the data into different categories but constructs a "tube" of tolerance error around the regression function, ensuring that most sample points lie within this tube and optimizing to minimize the influence of noise and outliers.
 
-#### 1.1 问题描述
-
-回归问题的目标是通过学习训练数据中的模式，预测连续的数值输出。在支持向量回归（Support Vector Regression, SVR）中，模型拟合的目标是找到一个函数，使得绝大多数数据点的预测误差不超过指定的容忍范围 $ \epsilon $。与分类SVM不同，SVR不再关注将数据分为不同类别，而是构建一个容忍误差的“间隔管道”，使绝大部分样本点都位于此管道内，并通过优化使模型对噪声和异常点的影响最小化。
-
-在数学表示上，给定数据集 $ (x_i, y_i) $，SVR尝试找到一个线性函数：
+Mathematically, given a dataset $(x_i, y_i)$, SVR attempts to find a linear function:
 
 $$
 f(x) = w \cdot x + b
 $$
 
-使得对于绝大部分样本点 $ (x_i, y_i) $，预测值 $ f(x_i) $ 和真实值 $ y_i $ 之间的差值不超过容忍范围 $ \epsilon $。这意味着模型允许一定程度的误差，但超出该容忍区间的误差会被惩罚。
+such that for most sample points $(x_i, y_i)$, the difference between the predicted value $f(x_i)$ and the true value $y_i$ does not exceed the tolerance range $\epsilon$. This means the model allows a certain degree of error, but errors beyond this tolerance range are penalized.
 
-#### 1.2 SVR的工作原理
+#### 1.2. Working Principle of SVR
 
-SVR的工作原理核心在于构建一个 $ \epsilon $-不敏感区间（epsilon-insensitive zone），即一个允许一定误差的间隔。这个间隔称为“间隔管道”或“回归带”。在该区间内，预测误差被忽略（即不计算损失），而超出此范围的误差则会受到惩罚。
+The core principle of SVR is to construct an $\epsilon$-insensitive zone, which is a margin that allows for some error. This margin is called the "tube" or "regression band." Within this margin, prediction errors are ignored (i.e., no loss is calculated), while errors that exceed this range are penalized.
 
-优化问题的目标是最小化模型的复杂度（通过控制 $ w $ 的大小），并将大部分样本点包含在 $ \epsilon $-不敏感区间内。具体地，优化问题的表示为：
+The optimization problem aims to minimize the model's complexity (by controlling the size of $w$) while ensuring that most sample points are contained within the $\epsilon$-insensitive zone. Specifically, the optimization problem is represented as:
 
 $$
 \min \frac{1}{2} \|w\|^2
@@ -204,7 +202,7 @@ $$
 \text{s.t.} \quad |y_i - (w \cdot x_i + b)| \leq \epsilon
 $$
 
-该约束条件表明所有数据点都尽量位于误差小于 $ \epsilon $ 的区间内。为了进一步处理那些超出容忍区间的样本点，SVR引入了松弛变量 $ \xi $ 和 $ \xi^* $ 来表示正、负方向上的偏差：
+These constraints indicate that all data points should ideally lie within an error range less than $\epsilon$. To further handle samples that exceed the tolerance zone, SVR introduces slack variables $\xi$ and $\xi^*$ to represent deviations in the positive and negative directions:
 
 $$
 \text{s.t.} \quad y_i - (w \cdot x_i + b) \leq \epsilon + \xi_i
@@ -214,63 +212,61 @@ $$
 (w \cdot x_i + b) - y_i \leq \epsilon + \xi_i^*
 $$
 
-最终，SVR的优化目标变为：
+Finally, the optimization objective of SVR becomes:
 
 $$
 \min \frac{1}{2} \|w\|^2 + C \sum_{i=1}^{n} (\xi_i + \xi_i^*)
 $$
 
-其中 $ C $ 为惩罚参数，控制模型对超出 $ \epsilon $-不敏感区间的误差的容忍度。较大的 $ C $ 值使模型更倾向于减少误差，但可能导致对噪声的过度拟合；较小的 $ C $ 值则允许更多误差，提升模型的泛化能力。
+where $C$ is the penalty parameter that controls the model's tolerance for errors exceeding $\epsilon$. A larger $C$ value makes the model more focused on reducing errors but may lead to overfitting, while a smaller $C$ value allows more errors, enhancing the model's generalization ability.
 
-#### 1.3 SVR求解方法
+#### 1.3. SVR Solving Methods
 
-SVR求解的核心是通过拉格朗日对偶方法将约束优化问题转化为无约束优化问题。通过引入拉格朗日乘子 $ \alpha $ 和 $ \alpha^* $，可以构建对偶问题，从而简化计算。优化过程的最终结果是通过支持向量计算出权重向量 $ w $ 和偏置 $ b $，得到的回归模型可用于预测新的样本点。
+The core of solving SVR lies in using the Lagrangian dual method to convert the constrained optimization problem into an unconstrained optimization problem. By introducing Lagrange multipliers $\alpha$ and $\alpha^*$, the dual problem can be constructed, simplifying the computation. The optimization process ultimately results in calculating the weight vector $w$ and bias $b$ using support vectors, and the resulting regression model can be used to predict new sample points.
 
-### 2. 核技巧在回归中的应用
+### 2. Application of Kernel Trick in Regression
 
-在实际应用中，许多数据集并非线性可分，即数据与输出之间的关系不是简单的线性关系。为了解决这一问题，SVR可以使用核函数（Kernel Function）将数据映射到高维空间，使得在该高维空间中回归问题变得接近线性可分。这种通过核函数映射实现的高效运算方式，避免了直接计算高维空间坐标，从而减少计算复杂度。
+In practical applications, many datasets are not linearly separable, meaning the relationship between the data and output is not a simple linear relationship. To address this issue, SVR can use kernel functions to map the data into a high-dimensional space, making the regression problem approximately linearly separable in that high-dimensional space. This kernel-based mapping allows for efficient computation without directly calculating high-dimensional coordinates, thereby reducing computational complexity.
 
-常见的核函数包括：
+Common kernel functions include:
 
-- **线性核**：适用于数据线性相关性较强的情况。
-- **多项式核**：适用于具有复杂特征交互的数据。
-- **径向基核（RBF）**：适用于大多数非线性问题，能很好地处理局部相似性。
-- **Sigmoid核**：在小规模数据的二类分类任务中使用较多。
+- **Linear Kernel**: Suitable for data with strong linear correlations.
+- **Polynomial Kernel**: Suitable for data with complex feature interactions.
+- **Radial Basis Function (RBF) Kernel**: Suitable for most non-linear problems, effectively handling local similarities.
+- **Sigmoid Kernel**: More commonly used in binary classification tasks with small datasets.
 
-核函数的选择直接影响模型的表现，需要结合数据的特点和具体任务进行选择与调优。径向基核（RBF）通常是默认的选择，因为其非线性特性适合多数实际应用。
+The choice of kernel function directly affects the model's performance and needs to be selected and tuned based on the data characteristics and specific tasks. The Radial Basis Function (RBF) kernel is typically the default choice because its non-linear characteristics are suitable for most real-world applications.
 
-### 3. 参数选择和调优
+### 3. Parameter Selection and Tuning
 
-SVR的主要参数包括：
+The main parameters of SVR include:
 
-- **惩罚参数 $ C $**：控制模型对超出容忍范围样本的惩罚力度。较大的 $ C $ 值会使模型更关注误差，趋向于较低的训练误差，但可能导致过拟合。较小的 $ C $ 值则允许更多误差，从而增强模型的泛化能力。
+- **Penalty Parameter $C$**: Controls the penalty for samples that lie outside the tolerance range. A larger $C$ value makes the model focus more on reducing errors, leading to lower training errors but potentially causing overfitting. A smaller $C$ value allows more errors, thereby enhancing the model's generalization ability.
+  
+- **Width of the Tolerance Zone $ \epsilon $**: Determines the error range within which the model does not calculate loss. Appropriately increasing $ \epsilon $ can reduce the model's sensitivity to noisy data, thereby improving model stability.
+  
+- **Kernel Function Parameters (e.g., $ \gamma $ for RBF Kernel)**: Control the feature space mapping of the kernel function, affecting the model's ability to fit non-linear relationships.
 
-- **容忍区间宽度 $ \epsilon $**：决定了模型在何种误差范围内不计算损失。适当增大 $ \epsilon $ 可以减少对噪声数据的敏感性，从而提高模型的稳定性。
+In practical use, these parameters typically need to be selected through cross-validation to find the optimal combination for achieving the best regression performance.
 
-- **核函数参数（如RBF核的 $ \gamma $**）：控制核函数的特征空间映射，影响模型的非线性拟合能力。
+## Manual Implementation of SVM Algorithms
 
-在实际使用中，这些参数通常需要通过交叉验证来选择，找到最优组合以获得最佳的回归效果。
+In this section, we will manually implement both classification SVM and regression SVM algorithms step by step, writing code tailored to the needs of classification and regression tasks, respectively. The implementation does not use any machine learning libraries but relies solely on basic numerical computation libraries to manually construct the algorithm process, aiding in understanding the core principles and computational processes of SVM algorithms.
 
+### 1. Classification SVM Implementation
 
+The goal of classification SVM is to find an optimal separating hyperplane that maximizes the margin between different classes of samples. Below are the implementation steps and code:
 
-## 手动实现SVM算法
-
-​	在本节中，我们将分步骤手动实现分类SVM和回归SVM算法，分别针对分类任务和回归任务的需求进行代码编写。实现中不使用任何机器学习库，仅依靠基础数值计算库来手动构建算法流程，帮助理解SVM算法的核心原理和计算过程。
-
-### 1. 分类SVM实现
-
-​	分类SVM的目标是找到一个最佳分隔超平面，以最大化间隔的方式将不同类别的样本分开。以下为实现步骤及代码：
-
-#### 1.1. 初始化参数和核函数
+#### 1.1. Initialize Parameters and Kernel Functions
 
 ```python
 import numpy as np
 
 class SVMClassifier:
     def __init__(self, C=1.0, kernel='linear', gamma=1.0):
-        self.C = C  # 惩罚系数
-        self.kernel = kernel  # 核函数类型
-        self.gamma = gamma  # RBF核的参数
+        self.C = C  # Penalty coefficient
+        self.kernel = kernel  # Type of kernel function
+        self.gamma = gamma  # Parameter for RBF kernel
 
     def linear_kernel(self, X, Y):
         return np.dot(X, Y.T)
@@ -285,7 +281,7 @@ class SVMClassifier:
             return self.rbf_kernel(X, Y)
 ```
 
-#### 1.2. 计算核矩阵并初始化拉格朗日乘子
+#### 1.2. Compute Kernel Matrix and Initialize Lagrange Multipliers
 
 ```python
 def fit(self, X, y):
@@ -295,30 +291,30 @@ def fit(self, X, y):
     self.X_train = X
     self.y_train = y
 
-    # 计算核矩阵
+    # Compute kernel matrix
     K = self.kernel_function(X, X)
 ```
 
-#### 1.3. 优化拉格朗日乘子（SMO简化实现）
+#### 1.3. Optimize Lagrange Multipliers (Simplified SMO Implementation)
 
 ```python
-for _ in range(100):  # 设置迭代次数
+for _ in range(100):  # Set number of iterations
     for i in range(n_samples):
-        # 计算预测值
+        # Calculate prediction
         prediction = (self.alpha * y) @ K[:, i] + self.b
-        # 更新 alpha_i 的值
+        # Update alpha_i's value
         error = y[i] * prediction - 1
         if error < 0:
             self.alpha[i] = min(self.C, self.alpha[i] + error)
 ```
 
-#### 1.4. 计算偏置项
+#### 1.4. Compute Bias Term
 
 ```python
 self.b = np.mean(y - (self.alpha * y) @ K)
 ```
 
-#### 1.5. 预测函数
+#### 1.5. Prediction Function
 
 ```python
 def predict(self, X):
@@ -326,7 +322,7 @@ def predict(self, X):
     return np.sign((self.alpha * self.y_train) @ K.T + self.b)
 ```
 
-完整代码如下：
+Complete code is as follows:
 
 ```python
 import numpy as np
@@ -371,19 +367,19 @@ class SVMClassifier:
         return np.sign((self.alpha * self.y_train) @ K.T + self.b)
 ```
 
-### 2. 回归SVM实现
+### 2. Regression SVM Implementation
 
-回归SVM的目标是拟合一个函数，以使绝大多数数据点在 \( \epsilon \) 不敏感区间内。以下是实现步骤：
+The goal of regression SVM is to fit a function such that most data points lie within the $\epsilon$-insensitive zone. Below are the implementation steps:
 
-#### 2.1. 核函数和初始化
+#### 2.1. Kernel Functions and Initialization
 
 ```python
 class SVR:
     def __init__(self, C=1.0, epsilon=0.1, kernel='linear', gamma=1.0):
-        self.C = C  # 惩罚系数
-        self.epsilon = epsilon  # 不敏感区间
-        self.kernel = kernel  # 核函数
-        self.gamma = gamma  # RBF核参数
+        self.C = C  # Penalty coefficient
+        self.epsilon = epsilon  # Tolerance zone
+        self.kernel = kernel  # Kernel function
+        self.gamma = gamma  # Parameter for RBF kernel
 
     def linear_kernel(self, X, Y):
         return np.dot(X, Y.T)
@@ -398,7 +394,7 @@ class SVR:
             return self.rbf_kernel(X, Y)
 ```
 
-#### 2.2. 初始化拉格朗日乘子和核矩阵
+#### 2.2. Initialize Lagrange Multipliers and Kernel Matrix
 
 ```python
 def fit(self, X, y):
@@ -411,7 +407,7 @@ def fit(self, X, y):
     K = self.kernel_function(X, X)
 ```
 
-#### 2.3. 更新拉格朗日乘子
+#### 2.3. Update Lagrange Multipliers
 
 ```python
 for _ in range(100):
@@ -423,13 +419,13 @@ for _ in range(100):
             self.alpha_star[i] = min(max(self.alpha_star[i] - self.C * error, 0), self.C)
 ```
 
-#### 2.4. 计算偏置项
+#### 2.4. Compute Bias Term
 
 ```python
 self.b = np.mean(y - (self.alpha - self.alpha_star) @ K)
 ```
 
-#### 2.5. 预测函数
+#### 2.5. Prediction Function
 
 ```python
 def predict(self, X):
@@ -437,7 +433,7 @@ def predict(self, X):
     return (self.alpha - self.alpha_star) @ K.T + self.b
 ```
 
-完整代码如下：
+Complete code is as follows:
 
 ```python
 import numpy as np
@@ -485,35 +481,26 @@ class SVR:
         return (self.alpha - self.alpha_star) @ K.T + self.b
 ```
 
+## Experimental Methods
 
+### 1. Iris Dataset
 
-
-
-## 实验方法
-
-### 1. iris数据集
-
-​	iris数据集是一个有150条4种特征的3类别平衡数据集。首先我们对其进行可视化以考察其线性可分性。可视化得到：
+The Iris dataset is a balanced dataset with 150 samples, each having four features across three classes. First, we visualize it to examine its linear separability. The visualization is as follows:
 
 ![iris](./asset/iris.png)
 
-​	可以看到这里的数据还是具有很好的线性可分性的，但是在边界处具有一些交叉（versicolor和virginica），因此我们适用软间隔SVC来处理这个问题，对于分类策略使用'ovr'，评判指标采用Precision，Recall，F1-Score等。结果在下一节阐述。
+It can be seen that the data still has good linear separability, but there is some overlap near the boundaries (between versicolor and virginica). Therefore, we apply a soft margin SVC to handle this problem. For the classification strategy, we use 'one-vs-rest' (ovr), and evaluation metrics such as Precision, Recall, and F1-Score are employed. The results are discussed in the next section.
 
+### 2. Ice-Cream Dataset
 
-
-### 2. ice-cream
-
-​	ice-cream数据集是只包含一个连续特征的回归任务。可视化两个变量的数据得到：
+The Ice-Cream dataset is a regression task containing only one continuous feature. Visualizing the two variables' data gives:
 
 <img src="./asset/icecream.png" alt="ice-cream" style="zoom:7%;" />
 
-可以看到数据呈现出很强的线性特性。则可以用线性核的SVC来做这个任务，评判指标采用MSE以及$R^2$。具体结果在下一节阐述。
+It can be seen that the data exhibits a strong linear characteristic. Therefore, a linear kernel SVC can be used for this task, with evaluation metrics including MSE (Mean Squared Error) and $R^2$. The specific results are discussed in the next section.
 
-### 3. wine-quality
+### 3. Wine-Quality Dataset
 
-​	这是一个有许多特征的单变量回归数据集。我们可以通过对每一个特征对因变量的变化作图。得到：
+This is a univariate regression dataset with many features. We can plot the change of each feature against the dependent variable. The results show:
 
-可见数据的线性可分性并不是很好，所以可能需要适用一些非线性核，比如高斯核。评价指标和iris一样。
-
-
-
+It is evident that the data's linear separability is not very good, so it may be necessary to use some non-linear kernels, such as the Gaussian kernel. The evaluation metrics are the same as those used for the Iris dataset.

@@ -6,7 +6,7 @@
 
 [Overview]
 
-gatsby-starter-portfolio-cara
+[TOC]
 
 
 
@@ -16,18 +16,19 @@ gatsby-starter-portfolio-cara
 
 ### supervised learning
 
-#### SVM ([blog of SVM](./post/svm/index.html))
+#### SVM: SVC & SVR ([en](./post/svm/index.html)/[zh](./post/svm/index_zh.html))
 
 
-| A    | B    | C    | D                | E    | F    |
-| ---- | ---- | ---- | ---------------- | ---- | ---- |
-| A1   | B1   | C1   | D1               | E1   | F1   |
-| A2   | 2.3  | $y$  | $\int_a^bf(x)dx$ |      |      |
-| A3   |      |      |                  |      |      |
 
-`sudo apt install vim`
 
-- [x] SVC
 
-- [ ] SVR
+---
+
+## Other Topics
+
+### My Website & Blog Deployment
+
+#### [How to deploy website like me?](./post/website_by_gatsby/index.html) 
+
+#### [Style snippets for my Blog.](./post/markdown_snippets/index.html)
 
