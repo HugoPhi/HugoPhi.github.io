@@ -14,11 +14,11 @@
 
 ## Machine Learning Algorithms
 
-### supervised learning
+​	This series of articles covers topics in Machine Learning, including both [Machine Learning Theories](./post/MLT/index.html) and the [Implementation of ML Algorithms from Scratch](./post/MLR/index.html). The "Theories" section serves as reading notes based on [Foundations of Machine Learning](https://zh.z-lib.gs/book/5003029/1eecc7/foundations-of-machine-learning.html) by M. Mohri, et al.. The "Implementation" section documents the development of the [Machine Learning Labs](https://github.com/HugoPhi/MachineLearningLabs) project.  You can click following links for more details: 
 
-#### SVM: SVC & SVR ([en](./post/svm/index.html)/[zh](./post/svm/index_zh.html))
+####  [Machine Learning theories](./post/MLT/index.html)
 
-
+#### [Realization of ML algorithms from scratch](./post/MLR/index.html)
 
 
 
