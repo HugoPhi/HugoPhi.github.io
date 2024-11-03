@@ -1,0 +1,281 @@
+/* Turing CSS */
+/* By Mistrza */
+
+/* 目录样式设置（TOC）：
+   隐藏 h1，调整 h2 到 h6 的左边距 */
+.md-toc-h1 {
+    display: none;
+}
+.md-toc-h2 {
+    margin-left: -2em;
+}
+.md-toc-h3 {
+    margin-left: -2.5em;
+}
+.md-toc-h4 {
+    margin-left: -3em;
+}
+.md-toc-h5 {
+    margin-left: -3.5em; 
+}
+.md-toc-h6 {
+    margin-left: -4em;
+}
+.md-toc-h2:before {
+    color: #0000FF;
+    white-space: pre-wrap;
+    counter-increment: h2toc;
+    content: '        ▸  '
+}
+.md-toc-h2 .md-toc-inner {
+    margin-left: 0;
+}
+.md-toc-h3:before {
+    color: #0000FF;
+    white-space: pre-wrap;
+    counter-increment: h3toc;
+    content: '        	▸  '
+}
+
+.md-toc-h3 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h4:before {
+    color: #0000FF;
+    white-space: pre-wrap;
+    counter-increment: h4toc;
+    content: '        		▸  '
+}
+
+.md-toc-h4 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h5:before {
+    color: #0000FF;
+    white-space: pre-wrap;
+    counter-increment: h5toc;
+    content: '        			▸  '
+}
+
+.md-toc-h5 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h6:before {
+    color: #0000FF;
+    white-space: pre-wrap;
+    counter-increment: h6toc;
+    content: '        				▸  '
+}
+
+
+.md-toc-h6 .md-toc-inner {
+    margin-left: 0;
+}
+
+
+/* 基本设置：
+   设置背景颜色、主文本颜色、字体、加粗效果和文本对齐 */
+body {
+    background-color: #fbfbfb;
+    color: #333;
+    font-family: 'Manjari', 'Noto Serif SC';
+    font-weight: bold;
+    text-decoration-skip: none;
+    text-align: justify;
+}
+
+/* 全局字体和大小设置：
+   为标题、段落、列表等元素设置字体和大小 */
+h1, h2, h3, h4, h5, h6, p, li, .cm-s-inner, .footnote-line {
+    font-family: 'Manjari', 'Noto Serif SC';
+    font-size: 22px;
+}
+
+/* 标题样式：
+   居中 h1 和 h2，并为 h1 设置大写和特定字体 */
+h1, h2 {
+    text-align: center;
+}
+h1 {
+    font-family: 'Pinyon Script', 'Noto Serif SC';
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+/* 下划线样式：
+   为 h2、h3、emphasis、关键字等添加下划线装饰 */
+h2, h3, em, .cm-keyword {
+    text-decoration: underline;
+}
+
+/* 标题层级样式：
+   为 h2 到 h6 设置大小、居中对齐、缩进和符号 */
+h2 {
+    font-size: 1.5em;
+    text-align: center;
+}
+h3 {
+    font-size: 1.2em;
+}
+h4::before, h5::before, h6::before {
+    content: '▸';
+    margin-right: 0.5em;
+    color: #333;
+    font-size: 1.2em;
+}
+h4 { text-indent: 2em; }
+h5 { text-indent: 4em; }
+h6 { text-indent: 6em; }
+
+/* 引用和加粗文本颜色：
+   设置引用和加粗文本为深蓝色 */
+blockquote, strong {
+    color: darkblue;
+}
+
+/* 引用块样式：
+   设置引用块的左右边距 */
+blockquote {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+/* 链接和脚注颜色：
+   设置链接和脚注为蓝色 */
+a, .footnote-line {
+    color: #0000FF;
+}
+
+/* 强调和加粗文本样式：
+   清除斜体效果 */
+em, strong {
+    font-style: normal;
+}
+
+/* 无序列表样式：
+   设置列表样式为方形 */
+ul {
+    list-style-type: disc;
+}
+
+/* 内容最大宽度：
+   限制内容的最大宽度 */
+#write {
+    max-width: 60em;
+}
+
+/* 页脚样式：
+   设置页脚分隔线的样式 */
+#footer p {
+    border-top: 2px solid #333;
+    margin-top: 10px;
+}
+
+/* 代码块样式：
+   为代码块设置字体、大小、边框和阴影 */
+.cm-s-inner {
+    font-family: 'FreeMono';
+    font-size: 0.8em;
+    border-left: 2px solid #333;
+    padding-left: 0.5em;
+}
+
+/* 水平线样式：
+   定义水平线的样式 */
+hr {
+    border: none;
+    border-top: 2px solid #333;
+    color: #333;
+}
+
+/* 表格样式：
+   设置表格的宽度、边框、字体和背景颜色 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Manjari', 'Noto Serif SC';
+    margin: 1em 0;
+    border: 1px solid black;
+    background-color: inherit;
+    table-layout: fixed;
+}
+th, td {
+    padding: 0.45em;
+    text-align: center;
+    border: 1px solid black;
+    background-color: inherit;
+}
+
+/* 表格第一行和第一列背景颜色 */
+thead th, td:first-child {
+    background-color: #e0e0e0;
+}
+thead th:first-child {
+    background-color: #b0b0b0;
+}
+
+/* 行内代码样式：
+   设置代码的字体、大小、颜色、背景、边框、圆角和阴影 */
+code {
+    font-family: 'FreeMono';
+    font-size: 0.9em;
+    color: #d32f2f;
+    background: linear-gradient(to bottom, #f7f7f7, #e0e0e0);
+    padding: 0.3em 0.6em;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+/* 任务列表样式：
+   设置任务列表项的对齐、复选框样式和完成任务的划线效果 */
+.md-task-list-item {
+    display: flex;
+    align-items: left;
+    font-family: 'Manjari', 'Noto Serif SC';
+    font-size: 22px;
+    color: #333;
+    font-weight: normal;
+}
+.md-task-list-item>input {
+    width: 1rem;
+    height: 1rem;
+    display: block;
+    -webkit-appearance: initial;
+    margin-left: -1.5rem;
+    margin-top: 0.55rem;
+    border: 0;
+}
+.md-task-list-item>input:focus {
+    outline: none;
+    box-shadow: none;
+}
+.md-task-list-item>input:before {
+    border: 1px solid #555;
+    border-radius: calc(1rem);
+    width: calc(0.9rem);
+    height: calc(0.9rem);
+    background: #fff;
+    content: '';
+    transition: background-color 200ms ease-in-out;
+    display: block;
+}
+.md-task-list-item>input:checked:before,
+.md-task-list-item>input[checked]:before {
+    background: #333;
+    display: inline-block;
+    transition: background-color 200ms ease-in-out;
+}
+.md-task-list-item>input:checked:after,
+.md-task-list-item>input[checked]:after {
+    opacity: 0;
+}
+.task-list-done {
+    text-decoration: line-through;
+}
+
+

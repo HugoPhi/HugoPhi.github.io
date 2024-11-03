@@ -112,11 +112,11 @@ greet();
 
 ## 7. Tables
 
-| Name  | Age | City     |
-| ----- | --- | -------- |
-| Alice | 25  | New York |
-| Bob   | 30  | London   |
-| Carol | 22  | Paris    |
+| Name  | Age |
+| ----- | --- |
+| Alice | 25  |
+| Bob   | 30  |
+| Carol | 22  |
 
 | Product | Price | Stock |
 | ------- | ----- | ----- |
@@ -204,11 +204,10 @@ ___
 
 Some renderers support text alignment:
 
-Left Aligned
+Left Aligned (Defalut)
 
 <center>Center Aligned</center> <!-- Not standard Markdown -->
 
-Right Aligned
 
 <div align="right">Right Aligned</div> <!-- Using HTML -->
 
