@@ -32,3 +32,5 @@
 
 #### [Style snippets for my Blog.](./post/markdown_snippets/index.html)
 
+#### [How to manage literature by Zotera tool-chain](./post/literature_management/index.html)
+
