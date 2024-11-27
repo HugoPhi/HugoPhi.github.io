@@ -24,6 +24,25 @@
 
 ---
 
+## Advanced Rust
+
+​	This series of articles is a simple introduction to advanced features for Rust, including: 
+
+- Generic & Trait
+- Inheritance & Polymorphism
+- Functional Programming
+- Meta Programming
+- Memory Management & Ownership
+- Error Trace
+- Compile Optimization & System Programming
+- Data Science for Rust
+
+[click here](./post/rust_pg/index.html) for details.
+
+
+
+---
+
 ## Other Topics
 
 ### My Website & Blog Deployment
