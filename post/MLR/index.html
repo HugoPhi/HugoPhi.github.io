@@ -222,6 +222,10 @@ mjx-container { break-inside: avoid; }
 /* Turing CSS */
 /* By Mistrza */
 
+:root {
+    --mermaid-theme: forest;
+}
+
 /* 目录样式设置（TOC）：
    隐藏 h1，调整 h2 到 h6 的左边距 */
 .md-toc-h1 {
@@ -328,7 +332,7 @@ h1 {
 
 /* 下划线样式：
    为 h2、h3、emphasis、关键字等添加下划线装饰 */
-h2, h3, em, .cm-keyword {
+h2, em, .cm-keyword {
     text-decoration: underline;
 }
 
@@ -342,7 +346,7 @@ h3 {
     font-size: 1.2em;
 }
 h4::before, h5::before, h6::before {
-    content: '▸';
+    content: '#';
     margin-right: 0.5em;
     color: #333;
     font-size: 1.2em;
@@ -501,11 +505,68 @@ code {
 
 
 
-
-
 </style><title>index</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='ml-from-scratch'><span>ML from scratch</span></h1><p>&nbsp;</p><p><span>SVM(</span><a href='./post/svm/index.html'><span>en</span></a><span>/</span><a href='./post/svm/index_zh.html'><span>zh</span></a><span>)</span></p></div></div>
+<div id='write'  class=''><h1 id='ml-from-scratch'><span>ML From Scratch</span></h1><p><span>中文： </span><a href='./index_zh.html'><span>zh</span></a></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#ml-from-scratch">ML From Scratch</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#introduction">Introduction</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n15"><a class="md-toc-inner" href="#project-structure">Project Structure</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n17"><a class="md-toc-inner" href="#1-source-code-src">1. Source Code (src)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n22"><a class="md-toc-inner" href="#2-tests-test">2. Tests (test)</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n27"><a class="md-toc-inner" href="#article-links">Article Links</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n40"><a class="md-toc-inner" href="#knowledge-prerequisites">Knowledge Prerequisites</a></span></p></div><h2 id='introduction'><span>Introduction</span></h2><p><span>	</span><span>As machine learning libraries continue to mature, many people seem to prefer using pre-packaged learners and algorithm libraries to handle machine learning problems in engineering and science. However, implementing a machine learning algorithm from scratch still has its value, especially for beginners who want to master the field. Here are a few reasons:</span></p><ul><li><p><span>The process of manually implementing an algorithm is fully visible and debuggable, making the algorithm&#39;s effectiveness more convincing.</span></p></li><li><p><span>Problems can be pinpointed precisely, and some issues offer a more intuitive and profound understanding (e.g., overfitting, weight initialization issues).</span></p></li><li><p><span>Theory combined with practice.</span></p></li></ul><p><span>	</span><span>For these reasons, manually implementing some basic machine learning algorithms is necessary. This article series primarily serves as an introduction, guiding you on how to implement a clean, scalable machine learning algorithm model.</span></p><p><span>	</span><span>This article also focuses on how to validate the performance of machine learning models. The quality of a machine learning algorithm cannot be fully understood through theoretical proofs alone. It requires validation through many examples and rigorous testing—such as testing on datasets of varying sizes and scenarios—and comparison with previous models or even human performance. This is because machine learning algorithms are meta-algorithms, and evaluating a learner—especially more complex ones—should rely on evaluation methods rather than proof methods. In other words, thorough testing itself is a powerful form of validation. It&#39;s similar to how we judge someone&#39;s cooking ability by tasting their dishes, rather than proving their skills with confusing symbols or theories (though this is also a worthwhile pursuit). Of course, this is just my personal understanding; feel free to correct me.</span></p><h2 id='project-structure'><span>Project Structure</span></h2><p><span>	</span><span>This article is essentially a walkthrough of the project, which contains a comprehensive algorithm library, package management, and testing functions—more than enough for learning purposes. Below, I’ll explain the overall structure:</span></p><h3 id='1-source-code-src'><span>1. Source Code (src)</span></h3><p><span>	</span><span>The source code refers to the raw implementation of machine learning models. We hope that the code we write can be easily used in various tasks, so we need to ensure good encapsulation. These encapsulated models should naturally be placed in a separate folder, which is </span><code>src</code><span>. Additionally, we need to categorize the algorithms within </span><code>src</code><span> to prevent confusion. The structure I use is as follows:</span></p><details style="margin-left: 20px">
+  <summary>Supervised Learning</summary>
+  <div style="margin-left: 20px">
+    <li>Logistic Regression</li>
+    <details>
+      <summary>Decision Trees</summary>
+      <div style="margin-left: 20px">
+        <li>ID3</li>
+        <li>C4.5</li>
+        <li>CART</li>
+      </div>
+    </details>
+    <details>
+      <summary>Support Vector Machines</summary>
+      <div style="margin-left: 20px">
+        <li>SVC</li>
+      </div>
+    </details>
+    <details>
+      <summary>Neural Networks</summary>
+      Description of Neural Network algorithms
+    </details>
+  </div>
+</details>
+<details style="margin-left: 20px">
+  <summary>Unsupervised Learning</summary>
+  <div style="margin-left: 20px">
+    <details>
+      <summary>K-means Clustering</summary>
+      Description of K-means Clustering algorithm
+    </details>
+    <details>
+      <summary>Principal Component Analysis</summary>
+      Description of PCA algorithm
+    </details>
+  </div>
+</details><p><span>	</span><span>If you need to add a new algorithm, just create a new package in the corresponding category and implement your algorithm.</span></p><h3 id='2-tests-test'><span>2. Tests (test)</span></h3><p><span>	</span><span>As mentioned earlier, we place great emphasis on testing the performance of algorithms. We use the following structure for testing:</span></p><details style="margin-left: 20px">
+  <summary>Supervised Learning</summary>
+  <div style="margin-left: 20px">
+    <li>Linear Regression</li>
+    <li>Logistic Regression</li>
+    <details>
+      <summary>Decision Trees</summary>
+      <div style="margin-left: 20px">
+        <li>Watermelon 2.0</li>
+        <li>Iris</li>
+        <li>Wine Quality</li>
+      </div>
+    </details>
+    <li>Support Vector Machines</li>
+    <li>Neural Networks</li>
+  </div>
+</details>
+<details style="margin-left: 20px">
+  <summary>Unsupervised Learning</summary>
+  <div style="margin-left: 20px">
+    <li>K-means Clustering</li>
+    <li>Principal Component Analysis</li>
+  </div>
+</details><p><span>	</span><span>If you need to add a new test, simply create a new folder at the same level within the corresponding category and write your test. You can also add tests as you wish based on your ideas.</span></p><h2 id='article-links'><span>Article Links</span></h2><p><span>The links to the articles are as follows:</span></p><ul><li><p><span>Linear Regression</span></p></li><li><p><span>Logistic Regression</span></p></li><li><p><span>Decision Trees</span></p></li><li><p><a href='./post/svm/index.html'><span>Support Vector Machines</span></a></p></li><li><p><span>Neural Networks</span></p></li></ul><h2 id='knowledge-prerequisites'><span>Knowledge Prerequisites</span></h2><p><span>	</span><span>This article will explain machine learning algorithms with pseudocode and Python code, so basic Python knowledge is required, such as object-oriented programming and error handling in Python. Additionally, for a better understanding of the project’s structure, you should learn how to use pip to manage a Python package—just a simple introduction is enough, no need to overdo it (just kidding). Other topics like advanced mathematics and linear algebra are not necessary for this section, but they will be useful in another series of articles on the principles of machine learning </span><a href='../MLT/index_zh.html'><span>here</span></a><span>. Since I am developing this project on Linux, knowing some basic Linux commands is also necessary.</span></p><p><span>	</span><span>Finally, I wish you all the best in completing this series, as applying theory to practice is a long and challenging journey.</span></p><p><span>	</span><span>May you reap the rewards, as this knowledge will prove beneficial.</span></p></div></div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 # SVM
 
+English: [en](./index.html)
+
 [TOC]
 
 ## 分类SVM算法理论

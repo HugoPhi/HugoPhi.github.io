@@ -1,5 +1,7 @@
 # SVM
 
+中文：[zh](./index_zh.html)
+
 [TOC]
 
 ## Classification SVM Algorithm Theory
