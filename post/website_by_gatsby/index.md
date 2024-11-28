@@ -1,10 +1,12 @@
 # My Website & blog
 
+中文：[zh](./index_zh.html)
+
 [TOC]
 
 
 
-***Link***: [Yunming Hu's Personal Page](https://ohpostintm3.top)
+**Link**: [Yunming Hu's Personal Page](https://ohpostintm3.top)
 
 ## How it works?
 
@@ -119,7 +121,19 @@ cd ./post/pca
 
 ##### 5. Multilingual support
 
-​	You can create index_zh.md for chinese support for example, and refer is by (link en/link zh/...). Do from 2$\sim$4. 
+​	You can create `index_xx.md` files for multilingual support, where `xx` represents your target language. For example, for Chinese: `index_zh.md`. Then, repeat steps 2 to 4. Additionally, you need to insert links to other language versions at the top of each `index` file. For instance, in the English `index.md`, you should insert:
+
+```markdown
+中文版：[zh](./index_zh.md)
+```
+
+and Iin the Chinese `index_zh.md`, you should insert:
+
+```markdown
+English: [en](./index.md)
+```
+
+Due to the structure of our organization, these lines are almost fixed. This is one of the reasons why I chose this structure—it’s somewhat similar to a B+ tree.
 
 ## Insight of Blog design
 

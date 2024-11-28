@@ -1,22 +1,118 @@
-# introduction
+# Introduction
+
+中文：[zh](./index_zh.html)
 
 [TOC]
 
 ## Why Rust?
 
-​	Rust 是一门系统编程语言，旨在提供内存安全、并发性和高性能的特性，同时避免传统系统编程语言（如 C 和 C++）常见的问题，如空指针引用、内存泄漏和数据竞争等。Rust 的设计哲学注重 **安全性**、**并发性** 和 **速度**，使它成为构建高效且安全的应用程序的理想选择。
-​	Rust 由 Mozilla 研发，并且是开源的。它的语法与现代编程语言类似，具有高度的表达能力。Rust 的核心特色之一是其 **所有权（Ownership）** 和 **借用（Borrowing）** 机制，这让它在不需要垃圾回收（GC）的情况下，能够自动管理内存，同时避免了内存泄漏和悬垂指针等问题。
-​	Rust 支持多范式编程，既有面向对象（通过结构体和特征）、函数式编程（通过闭包和高阶函数）以及并发编程（通过轻量级线程和异步编程）等特性，提供了非常强大的表达能力和灵活性。
+​	Rust is a systems programming language designed to provide memory safety, concurrency, and high performance while avoiding common issues found in traditional systems programming languages like C and C++, such as null pointer dereferencing, memory leaks, and data races. Rust's design philosophy emphasizes **safety**, **concurrency**, and **speed**, making it an ideal choice for building efficient and secure applications. 
+​	Rust is developed by Mozilla and is open-source. Its syntax is similar to modern programming languages and offers high expressiveness. One of Rust's core features is its **Ownership** and **Borrowing** system, which allows for automatic memory management without the need for garbage collection (GC), avoiding problems like memory leaks and dangling pointers. 
+​	Rust supports multiple programming paradigms, including object-oriented programming (through structs and traits), functional programming (via closures and higher-order functions), and concurrent programming (using lightweight threads and asynchronous programming), offering powerful expressiveness and flexibility.
 
-#### 主要特点
+### 🔥 Main Features
 
-- **内存安全**：Rust 的所有权系统和借用检查器使得内存安全得到保障，避免了常见的内存问题，如野指针和内存泄漏。
-- **并发性**：Rust 的并发模型避免了数据竞争，利用所有权、借用和锁等机制，提供了线程安全的并发编程支持。
-- **零成本抽象**：Rust 的抽象（如泛型、特征和闭包）非常高效，几乎没有运行时开销，确保代码的执行性能。
-- **现代语法**：Rust 拥有易于理解和学习的现代化语法，同时也支持底层编程，适用于系统级开发。
-- **无垃圾回收**：Rust 通过所有权和生命周期管理内存，而不依赖垃圾回收器，这使得程序具有更高的执行效率。
+- **Memory Safety**: Rust's ownership system and borrowing checker ensure memory safety, preventing common memory issues such as dangling pointers and memory leaks.
+- **Concurrency**: Rust's concurrency model eliminates data races by utilizing ownership, borrowing, and locks, providing thread-safe concurrency support.
+- **Zero-Cost Abstractions**: Rust's abstractions (such as generics, traits, and closures) are highly efficient, with minimal runtime overhead, ensuring high execution performance.
+- **Modern Syntax**: Rust has a modern, easy-to-understand syntax that is still suitable for low-level systems programming.
+- **No Garbage Collection**: Rust manages memory through ownership and lifetimes, without relying on a garbage collector, leading to better performance.
 
-## What you will learn in this Guide?
+## What You Will Learn in This Guide?
 
-## Things you should know before start.
+​	This guide introduces some advanced features of Rust programming, including: generics, polymorphism, metaprogramming, functional programming, metaprogramming, high concurrency, and parallel programming. It also covers additional topics such as web development, scientific computing, and machine learning. Here is the table of contents:
 
+### Advanced Features
+
+- [Generic & Trait](./post/1/index.html)
+- [Inheritance & Polymorphism](./post/2/index.html)
+- [Meta Programming](./post/3/index.html)
+- [Memory Management & Ownership](./post/4/index.html)
+- [Error Trace](./post/5/index.html)
+- [Compile Optimization & System Programming](./post/6/index.html)
+
+### Topics
+
+- [Science Computing for Rust](./post/7/index.html)
+- [Machine Learning by Rust](./post/8/index.html)
+- [Web Programming](./post/9/index.html)
+
+## Things You Should Know Before Starting
+
+Before diving into this guide, it is recommended that you have a basic understanding of the following:
+
+- Rust Compilation Process
+- Cargo Package Management
+- Basic Rust Syntax:
+  - Variable Declarations
+    - Immutable Variables (`let`)
+    - Mutable Variables (`let mut`)
+    - Constants (`const`)
+    - Type Inference
+    - Explicit Type Declaration
+    - Destructuring Assignment
+  - Data Types
+    - Scalar Types
+      - Integer Types (`i8`, `i16`, `i32`, `i64`, `i128`, `u8`, `u16`, `u32`, `u64`, `u128`, `usize`, `isize`)
+      - Floating-Point Types (`f32`, `f64`)
+      - Boolean Type (`bool`)
+      - Character Type (`char`)
+    - Compound Types
+      - Tuples (`tuple`)
+      - Arrays (`array`)
+      - Slices (`slice`)
+  - Control Flow
+    - Conditional Statements: `if` expressions, `else` statements, `else if` statements
+    - Looping Statements: `loop`, `while`, `for`
+    - Match Expressions
+      - `match` statement
+      - Pattern Matching
+  - Functions
+    - Function Declaration
+      - Function Signature
+      - Function Return Values
+      - Multiple Return Values (Tuples)
+    - Function Scope
+      - Parameter Passing (by Value vs. by Reference)
+      - Anonymous Functions (Closures)
+    - Variable Parameters
+  - Ownership & Borrowing
+    - Ownership
+      - Ownership Transfer
+      - Borrowing Ownership (Immutable Borrowing, Mutable Borrowing)
+    - Borrowing
+      - Immutable Borrowing (`&T`)
+      - Mutable Borrowing (`&mut T`)
+    - Lifetimes
+      - Lifetime Annotations
+      - Lifetime Inference
+  - Structs
+    - Struct Definition
+      - Similar to Classes in OOP but without Inheritance
+      - Struct Fields Definition
+      - Struct Initialization
+    - Methods and Associated Functions
+      - `impl` Block
+      - `self` Parameter
+    - Struct Pattern Matching
+  - Enums
+    - Enum Definition
+      - Variants
+      - Enum Types with Data (e.g., Tuples or Structs)
+    - `match` Statement and Enums
+  - Error Handling
+    - `Result` Enum
+      - `Ok` and `Err`
+      - Error Propagation (`?` Operator)
+    - `Option` Enum
+      - `Some` and `None`
+  - Modules & Packages
+    - Module System (`mod`)
+      - File Modules
+      - Nested Modules
+      - `use` Import
+    - Packages and Dependency Management
+      - `Cargo.toml` Configuration File
+      - Third-Party Libraries (Crates)
+
+​	It is recommended that you first familiarize yourself with these syntax concepts through dialogue with a large language model, and for more detailed knowledge, you can refer to Rust's official documentation or read its source code.
