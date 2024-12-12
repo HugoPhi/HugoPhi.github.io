@@ -1,6 +1,6 @@
 # My Bolgs
 
-Link: [Yunming Hu's Blog](https://github.com/HugoPhi/HugoPhi.github.io)
+Link: [Yunming Hu's Blog](https://hugophi.github.io/)
 
 ## View
 
