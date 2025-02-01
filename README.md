@@ -1,3 +1,5 @@
+> 鉴于github page"令人惊叹"的部署速度，本项目已经迁移到新项目地址[hugophi/blog](https://github.com/HugoPhi/blog.git)
+
 # My Bolgs
 
 Link: [Yunming Hu's Blog](https://hugophi.github.io/)
